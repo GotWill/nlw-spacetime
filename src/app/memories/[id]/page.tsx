@@ -63,7 +63,7 @@ export default async function Details({ params }: any) {
                     Excluir
                 </button>
 
-                <Modal/>
+                {/* <Modal/> */}
             </div>
 
             
