@@ -23,6 +23,7 @@ export async function memoriesRoutes(app: FastifyInstance) {
         id: memory.id,
         coverUrl: memory.coverUrl,
         excerpt: memory.content.substring(0, 115).concat('...'),
+        createAt: memory.createAt,
       }
     })
   })
@@ -36,6 +37,12 @@ export async function memoriesRoutes(app: FastifyInstance) {
     const memory = await prisma.memory.findUniqueOrThrow({
       where: {
         id,
+      },
+      select: {
+        content: true,
+        coverUrl: true,
+        isPublic: true,
+        userId: true,
       },
     })
 
